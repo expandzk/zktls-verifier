@@ -1,0 +1,19 @@
+[package]
+name = "verifier"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+protos = { path = "../protos" }
+ethers = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+typed-builder = { workspace = true }
+prost = { workspace = true }
+hex = { workspace = true }
+log = { workspace = true }
+rustc-hex = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }
