@@ -1,2 +1,2 @@
-# zktls-verifier-
+# zktls-verifier
 zktls verifier 
