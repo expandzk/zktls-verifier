@@ -110,10 +110,10 @@ fn verify_request_url(request: &ClaimTunnelRequest, expected_url: &str) -> Resul
 }
 
 fn build_result_message(response: &ClaimTunnelResponse) -> Result<H256, VerifyError> {
-    let mut response_message = ClaimTunnelResponse::default();
-    response_message.request = response.request.clone();
-    response_message.result = response.result.clone();
-    response_message.signatures = None;
+    let response_message = ClaimTunnelResponse::builder()
+        .request(response.request.clone())
+        .result(response.result.clone())
+        .build();
     let result = response_message.encode_to_vec();
     Ok(hash_message(result))
 }
@@ -123,7 +123,7 @@ fn build_claim_message(claim: &ProviderClaimData) -> Result<H256, VerifyError> {
     let owner = claim.owner.to_lowercase();
 
     // Create the lines array similar to TypeScript
-    let lines = vec![
+    let lines = [
         claim.identifier.clone(),
         owner,
         claim.timestamp_s.to_string(),
